@@ -1,43 +1,10 @@
 const h1 = document.querySelector("div.hello:first-child h1");
 
-console.dir(h1);
-
 function handleTitleClick() {
-    h1.style.color = "blue";
+    const clickedClass = "clicked";
+    h1.classList.toggle("clicked");
 }
-
-function handleMouseEnter() {
-    h1.innerText = "Mouse is here";
-}
-
-function handleMouseLeave() {
-    h1.innerText = "Mouse is gon!";
-}
-
-function handleWindowResize() {
-    document.body.style.backgroundColor = "tomato";
-}
-
-function handleWindowCopy() {
-    alert("copier");
-}
-
-function handleWindowOffline() {
-    alert("SOS no WIFI");
-}
-
-function handleWindowOnline() {
-    alert("ALL good");
-}
-
+// toggle은 classList에 "clicked" 가 있는 것을 확인해서
+// 이미 존재한다면 ("clicked")를 제거해주는 역할을 한다.
+// 만약 classList에 clicked가 없다면, 해당 내용을 추가해준다.
 h1.addEventListener("click", handleTitleClick);
-// h1.onclick = handleTitleClick;
-h1.addEventListener("mousemove", handleMouseEnter);
-// h1.onmouseenter = handleMouseEnter;
-h1.addEventListener("mouseleave", handleMouseLeave);
-// h1.mouseleave = handleMouseLeave;
-
-window.addEventListener("resize", handleWindowResize);
-window.addEventListener("copy",handleWindowCopy);
-window.addEventListener("offline", handleWindowOffline);
-window.addEventListener("online", handleWindowOnline);
