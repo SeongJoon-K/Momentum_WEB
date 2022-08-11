@@ -8,3 +8,4 @@ function handleTitleClick() {
 // 이미 존재한다면 ("clicked")를 제거해주는 역할을 한다.
 // 만약 classList에 clicked가 없다면, 해당 내용을 추가해준다.
 h1.addEventListener("click", handleTitleClick);
+h1.addEventListener("")

@@ -31,9 +31,9 @@ const calculator = {
     }
 };
 
-// calculator.plus(2,3);
-// calculator.minus(2,3);
-// calculator.times(2,3);
+calculator.plus(2,3);
+calculator.minus(2,3);
+calculator.times(2,3);
 
 // 
 const age = 96;
