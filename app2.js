@@ -1,22 +1,30 @@
-const h1 = document.querySelector("div.hello:first-child h1");
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
 
-function handleTitleClick() {
-    const clickedClass = "clicked";
-    h1.classList.toggle("clicked");
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
+
+function onLoginSubmit(event) {
+    event.preventDefault(); // 1. 브라우저의 기본동작을 막는다.
+    loginForm.classList.add(HIDDEN_CLASSNAME) // 2. loginForm에서 hidden class 를 추가함.
+    const username = loginInput.value; // username이라는 변수를 
+    localStorage.setItem(USERNAME_KEY, username);
+    paintGreetings();
+    // 그렇게 되면 hidden이라는 클래스를 갖고 있는 것은 Form만 존재하게 됨
 }
-// toggle은 classList에 "clicked" 가 있는 것을 확인해서
-// 이미 존재한다면 ("clicked")를 제거해주는 역할을 한다.
-// 만약 classList에 clicked가 없다면, 해당 내용을 추가해준다.
-h1.addEventListener("click", handleTitleClick);
-h1.addEventListener("")
-h1.addEventListener("mouse")
 
-// t2의 콘텐츠를 바꾸는 함수
-function modifyText(new_text) {
-    const t2 = document.getElementById("t2");
-    t2.firstChild.nodeValue = new_text;
-  }
-  
-  // 화살표 함수를 사용한 이벤트 수신기를 표에 추가
-  const el = document.getElementById("outside");
-  el.addEventListener("click", () => { modifyText("four"); }, false);
+function paintGreetings() {
+    const username = localStorage.getItem(USERNAME_KEY);
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+const savedUserName = localStorage.getItem(USERNAME_KEY);
+
+if(savedUserName === null) {
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    paintGreetings();
+}
